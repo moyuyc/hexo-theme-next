@@ -27,7 +27,8 @@ tags:
     成功后，会给你一个ssh key路径，找到对应的ssh key文件(后缀*.pub)
 
 - 来到 GitHub 个人首页，在设置中，添加一个SSH Key。title 可以随便取名字，Key 里面添加的内容为 id_rsa.pub 文件内所有的代码。然后点击 Apply 即可。
-- 测试与 GitHub 是否连接成功：SSH -v git@github.com
+- 测试与 GitHub 是否连接成功：
+        SSH -v git@github.com
 ***这里我遇到了问题***
 在前面的文章[感受Hexo的强大与高效（搭建Blog至GitHub Page教程）](/2016/04/22/感受Hexo的强大与高效（搭建Blog至GitHub%20Page教程）/)中，
 我提到了需要为你的username.github.io项目添加SSH Key，
