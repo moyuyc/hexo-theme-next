@@ -3,6 +3,7 @@ title: requestAnimationFrame Vs setInterval
 date: 2016-04-23 11:52:58
 tags:
  - js
+categories: [前端]
 ---
 # 介绍
 大家对setInterval一定不陌生，但可能不太了解requestAnimationFrame
