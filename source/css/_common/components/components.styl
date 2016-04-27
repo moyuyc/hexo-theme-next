@@ -1,0 +1,23 @@
+@import "highlight";
+@import "tags";
+
+@import "buttons";
+@import "pagination";
+@import "comments";
+@import "tag-cloud";
+
+$pos = hexo-config('sidebar.position');
+$pos = !$pos?'left':$pos;
+if $pos in ('left')
+  @import "back-to-top";
+else if $pos in ('right')
+  @import "back-to-top-right";
+
+
+@import "header";
+@import "post";
+@import "sidebar";
+@import "footer";
+@import "third-party";
+
+@import "pages";
