@@ -1,6 +1,7 @@
-{% if config.search.path %}
+{% if !config.search.remote %}
   <script type="text/javascript">
     // Popup Window;
+
     var isfetched = false;
     // Search DB path;
     var search_path = "{{ config.search.path }}";
@@ -8,6 +9,8 @@
        search_path = "search.xml";
     }
     var path = "{{ config.root }}" + search_path;
+
+
     // monitor main search box;
 
     function proceedsearch() {
@@ -17,7 +20,8 @@
     }
     // search function;
     var searchFunc = function(path, search_id, content_id) {
-    'use strict';
+
+    //'use strict';
     $.ajax({
         url: path,
         dataType: "xml",
@@ -37,7 +41,7 @@
             var $resultContent = document.getElementById(content_id);
             $input.addEventListener('input', function(){
                 var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
+                var str='<ul class=\"search-result-list\">';
                 var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
                 $resultContent.innerHTML = "";
                 if (this.value.trim().length > 1) {
@@ -92,7 +96,7 @@
                                 var regS = new RegExp(keyword, "gi");
                                 match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
                             });
-                            
+
                             str += "<p class=\"search-result\">" + match_content +"...</p>"
                         }
                         str += "</li>";
@@ -104,12 +108,13 @@
                 $resultContent.innerHTML = str;
             });
             proceedsearch();
-        }
-    });}
+        },
+
+    }).fail((a,b,c)=>{console.log(a,b,c)})
+    ;}
 
     // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
+    $('.popup-trigger').off('click').click(function(e) {
       if (isfetched == false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
